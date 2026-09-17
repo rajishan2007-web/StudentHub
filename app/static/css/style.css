@@ -1,0 +1,249 @@
+/* 🌈 Background Gradient */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #5f6dfc, #7b3fe4);
+    color: white;
+}
+
+
+/* 🔷 Glass Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    /* glass effect */
+    backdrop-filter: blur(10px);
+    /* blur background */
+    border-radius: 0 0 15px 15px;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+
+/* Hover effect on navbar links */
+
+.navbar a:hover {
+    color: #ffd700;
+}
+
+
+/* 🔥 Hero Section */
+
+.hero {
+    text-align: center;
+    margin-top: 120px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+
+/* 🚀 Buttons */
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    /* makes items in row */
+    justify-content: center;
+    /* centers horizontally */
+    align-items: center;
+    /* centers vertically */
+    gap: 20px;
+    /* space between buttons */
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 30px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+
+/* Hover effect */
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* Secondary button */
+
+.btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+
+/* 🧱 Cards Layout */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 120px;
+    flex-wrap: wrap;
+}
+
+
+/* ✨ Premium Cards */
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    /* glass card */
+    backdrop-filter: blur(12px);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 280px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+
+/* Hover animation */
+
+.card:hover {
+    transform: translateY(-10px);
+    /* lift effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Card text */
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    opacity: 0.9;
+}
+
+
+/* 📱 Responsive (mobile friendly) */
+
+@media (max-width: 768px) {
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+
+
+/* 🔐 Auth Page Container */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+
+/* ✨ Glass Card */
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+}
+
+
+/* Heading */
+
+.auth-card h2 {
+    margin-bottom: 20px;
+}
+
+
+/* Inputs */
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+
+/* Button */
+
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+/* Button hover */
+
+.auth-card button:hover {
+    transform: scale(1.05);
+}
+
+
+/* Link */
+
+.auth-card a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+
+/* Input focus animation */
+
+.auth-card input:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    transform: scale(1.02);
+    transition: 0.2s;
+}
+
+
+/* Button glow */
+
+.auth-card button {
+    background: linear-gradient(45deg, #ffffff, #e0e0ff);
+}
+
+.auth-card button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}

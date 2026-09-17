@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="auth-container"> <!-- center layout -->
+
+    <div class="auth-card"> <!-- glass card -->
+
+        <h2>Login</h2>
+
+        <form method="POST">
+
+            <!-- Email input -->
+            <input 
+                type="email" 
+                name="email" 
+                placeholder="Enter your email" 
+                required
+            >
+
+            <!-- Password input -->
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Enter your password" 
+                required
+            >
+
+            <!-- Login button -->
+            <button type="submit">Login</button>
+
+        </form>
+
+        <!-- Link to signup -->
+        <p>
+            Don’t have an account? 
+            <a href="{{ url_for('auth.signup') }}">Signup</a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

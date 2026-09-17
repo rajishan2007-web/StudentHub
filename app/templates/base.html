@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Hub</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar">
+    <h2>🎓 Student Hub</h2>
+
+    <div>
+
+        <!-- Home -->
+        <a href="/">Home</a>
+
+        {% if current_user.is_authenticated %}
+            <!-- If user is logged in -->
+
+            <!-- Show username -->
+            <span style="margin-left: 20px;">
+                Hello, {{ current_user.username }}
+            </span>
+
+            <!-- Logout button -->
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+
+        {% else %}
+            <!-- If user NOT logged in -->
+
+            <a href="{{ url_for('auth.login') }}">Login</a>
+            <a href="{{ url_for('auth.signup') }}">Signup</a>
+
+        {% endif %}
+
+    </div>
+</nav>
+
+    <!-- 🔷 PAGE CONTENT WILL COME HERE -->
+    {% block content %}{% endblock %}
+
+</body>
+</html>
