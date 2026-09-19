@@ -4,6 +4,7 @@
 
 <div class="page-header">
     <h1>👤 My Profile</h1>
+    <a href="{{ url_for('profile.edit_profile') }}" class="btn">Edit Profile</a>
 </div>
 
 <div class="auth-card profile-card">
@@ -21,7 +22,12 @@
             <div class="card">
                 <h3>{{ post.title }}</h3>
                 <p><small>{{ post.created_at.strftime('%d %b %Y') }}</small></p>
-                <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read</a>
+                <div class="card-actions">
+                    <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read</a>
+                    <form method="POST" action="{{ url_for('blog.delete_post', post_id=post.id) }}" class="inline-form">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this post?')">Delete</button>
+                    </form>
+                </div>
             </div>
         {% endfor %}
     </div>

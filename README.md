@@ -6,7 +6,10 @@ A student community platform built with Flask where users can sign up, write blo
 
 - **User Authentication** — Signup, login, and logout with secure password hashing
 - **Blog System** — Create, read, and browse blog posts
-- **User Profiles** — View your profile info and all your published posts
+- **Search Blog** — Search posts by title or content
+- **Delete Posts** — Remove your own posts with confirmation
+- **User Profiles** — View and edit your profile info
+- **Flash Messages** — Success/error notifications on every action
 - **Glassmorphism UI** — Modern glass-effect design with gradient backgrounds
 
 ## Tech Stack
@@ -47,7 +50,8 @@ student_hub/
 │       │   ├── new.html
 │       │   └── view.html
 │       └── profile/
-│           └── view.html
+│           ├── view.html
+│           └── edit.html
 └── instance/
     └── database.db
 ```

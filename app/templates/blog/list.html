@@ -10,6 +10,22 @@
     {% endif %}
 </div>
 
+<div class="search-container">
+    <form method="GET" action="{{ url_for('blog.list_posts') }}" class="search-form">
+        <input
+            type="text"
+            name="q"
+            placeholder="Search posts..."
+            value="{{ query or '' }}"
+        >
+        <button type="submit" class="btn">Search</button>
+    </form>
+</div>
+
+{% if query %}
+    <p class="search-results-text">Results for "{{ query }}" ({{ posts|length }} found)</p>
+{% endif %}
+
 {% if posts %}
 
     <div class="cards">
@@ -18,14 +34,25 @@
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.content[:120] }}{% if post.content|length > 120 %}...{% endif %}</p>
                 <p><small>By {{ post.author.username }} on {{ post.created_at.strftime('%d %b %Y') }}</small></p>
-                <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read More</a>
+                <div class="card-actions">
+                    <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read More</a>
+                    {% if current_user.is_authenticated and current_user.id == post.user_id %}
+                        <form method="POST" action="{{ url_for('blog.delete_post', post_id=post.id) }}" class="inline-form">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
     </div>
 
 {% else %}
 
-    <p class="empty-message">No posts yet. Be the first to write one!</p>
+    {% if query %}
+        <p class="empty-message">No posts found matching "{{ query }}".</p>
+    {% else %}
+        <p class="empty-message">No posts yet. Be the first to write one!</p>
+    {% endif %}
 
 {% endif %}
 
