@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -6,38 +5,32 @@ __pycache__/
 *.pyd
 .Python
 
-# Virtual Environment
 venv/
 env/
 ENV/
 .venv/
 
-# Flask / SQLite
 instance/
 *.db
 *.sqlite
 *.sqlite3
 
-# Environment variables
 .env
 .env.*
 
-# IDE
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 
-# OS
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Logs
 *.log
 logs/
 
-# Distribution / packaging
 dist/
 build/
 *.egg-info/

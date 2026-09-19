@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="post-container">
+
+    <h1>{{ post.title }}</h1>
+    <p><small>By {{ post.author.username }} on {{ post.created_at.strftime('%d %b %Y') }}</small></p>
+
+    <div class="post-content">
+        {{ post.content }}
+    </div>
+
+    <a href="{{ url_for('blog.list_posts') }}" class="btn secondary">Back to Blog</a>
+
+</div>
+
+{% endblock %}

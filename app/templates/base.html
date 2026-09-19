@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Hub</title>
-
-    <!-- Link CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -13,33 +11,23 @@
     <h2>🎓 Student Hub</h2>
 
     <div>
-
-        <!-- Home -->
         <a href="/">Home</a>
+        <a href="{{ url_for('blog.list_posts') }}">Blog</a>
 
         {% if current_user.is_authenticated %}
-            <!-- If user is logged in -->
-
-            <!-- Show username -->
+            <a href="{{ url_for('profile.view_profile') }}">Profile</a>
             <span style="margin-left: 20px;">
                 Hello, {{ current_user.username }}
             </span>
-
-            <!-- Logout button -->
             <a href="{{ url_for('auth.logout') }}">Logout</a>
-
         {% else %}
-            <!-- If user NOT logged in -->
-
             <a href="{{ url_for('auth.login') }}">Login</a>
             <a href="{{ url_for('auth.signup') }}">Signup</a>
-
         {% endif %}
 
     </div>
 </nav>
 
-    <!-- 🔷 PAGE CONTENT WILL COME HERE -->
     {% block content %}{% endblock %}
 
 </body>

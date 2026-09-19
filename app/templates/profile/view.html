@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>👤 My Profile</h1>
+</div>
+
+<div class="auth-card profile-card">
+    <p><strong>Username:</strong> {{ current_user.username }}</p>
+    <p><strong>Email:</strong> {{ current_user.email }}</p>
+    <p><strong>Posts written:</strong> {{ posts|length }}</p>
+</div>
+
+<h2 class="section-title">My Posts</h2>
+
+{% if posts %}
+
+    <div class="cards">
+        {% for post in posts %}
+            <div class="card">
+                <h3>{{ post.title }}</h3>
+                <p><small>{{ post.created_at.strftime('%d %b %Y') }}</small></p>
+                <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read</a>
+            </div>
+        {% endfor %}
+    </div>
+
+{% else %}
+
+    <p class="empty-message">You haven't written any posts yet.</p>
+
+{% endif %}
+
+{% endblock %}

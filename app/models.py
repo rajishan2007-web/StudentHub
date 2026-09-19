@@ -1,15 +1,20 @@
-# Import SQLAlchemy for database and UserMixin for login features
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+from datetime import datetime
 
-db = SQLAlchemy()   # Create database object
+db = SQLAlchemy()
 
-class User(UserMixin, db.Model):   # User table (this will create a table in database)
-    
-    id = db.Column(db.Integer, primary_key=True)   # Unique ID for each user (Primary Key)
-    
-    username = db.Column(db.String(100), unique=True, nullable=False)   # Username (must be unique and cannot be empty)
-    
-    email = db.Column(db.String(150), unique=True, nullable=False)   # Email (must be unique and cannot be empty)
-    
-    password = db.Column(db.String(200), nullable=False)   # Password (stored as hashed string, not plain text)
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), unique=True, nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(200), nullable=False)
+    posts = db.relationship('Post', backref='author', lazy=True)
+
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(150), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

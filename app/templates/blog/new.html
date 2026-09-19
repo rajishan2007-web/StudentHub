@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h2>Write a Post</h2>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Post title"
+                required
+            >
+
+            <textarea
+                name="content"
+                placeholder="Write something..."
+                rows="6"
+                required
+            ></textarea>
+
+            <button type="submit">Publish</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
