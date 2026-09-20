@@ -2,46 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
     <nav class="navbar">
-    <h2>🎓 Student Hub</h2>
+        <a href="/" class="nav-brand">🎓 Student Hub</a>
 
-    <div>
-        <a href="/">Home</a>
-        <a href="{{ url_for('blog.list_posts') }}">Blog</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="{{ url_for('blog.list_posts') }}">Blog</a>
 
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('profile.view_profile') }}">Profile</a>
-            <span style="margin-left: 20px;">
-                Hello, {{ current_user.username }}
-            </span>
-            <a href="{{ url_for('auth.logout') }}">Logout</a>
-        {% else %}
-            <a href="{{ url_for('auth.login') }}">Login</a>
-            <a href="{{ url_for('auth.signup') }}">Signup</a>
-        {% endif %}
-
-    </div>
-</nav>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('profile.view_profile') }}">Profile</a>
+                <span class="nav-user">{{ current_user.username }}</span>
+                <a href="{{ url_for('auth.logout') }}" class="nav-logout">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.signup') }}" class="nav-signup-btn">Signup</a>
+            {% endif %}
+        </div>
+    </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             <div class="flash-container">
                 {% for category, message in messages %}
                     <div class="flash-message flash-{{ category }}">
-                        {{ message }}
-                        <span class="flash-close" onclick="this.parentElement.remove()">✕</span>
+                        <span>{% if category == 'success' %}✓{% else %}⚠{% endif %} {{ message }}</span>
+                        <span class="flash-close" onclick="this.parentElement.style.animation='fadeOut 0.3s forwards';setTimeout(()=>this.parentElement.remove(),300)">✕</span>
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
     {% endwith %}
 
-    {% block content %}{% endblock %}
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>Built with ❤️ by Student Hub Team</p>
+    </footer>
 
 </body>
 </html>

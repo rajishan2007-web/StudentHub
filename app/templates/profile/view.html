@@ -4,7 +4,7 @@
 
 <div class="page-header">
     <h1>👤 My Profile</h1>
-    <a href="{{ url_for('profile.edit_profile') }}" class="btn">Edit Profile</a>
+    <a href="{{ url_for('profile.edit_profile') }}" class="btn btn-outline">Edit Profile</a>
 </div>
 
 <div class="auth-card profile-card">
@@ -25,7 +25,7 @@
                 <div class="card-actions">
                     <a href="{{ url_for('blog.view_post', post_id=post.id) }}" class="btn secondary">Read</a>
                     <form method="POST" action="{{ url_for('blog.delete_post', post_id=post.id) }}" class="inline-form">
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this post?')">Delete</button>
+                        <button type="submit" class="btn-danger" onclick="return confirm('Delete this post?')">Delete</button>
                     </form>
                 </div>
             </div>

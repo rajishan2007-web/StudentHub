@@ -2,37 +2,54 @@
 
 {% block content %}
 
-<div class="hero">
-    <h1>Welcome to Student Hub 🎓</h1>
-    <p>Your one-stop platform for learning, blogging, and growth</p>
-</div>
+<section class="hero">
+    <div class="hero-badge">🚀 Open Platform for Students</div>
+    <h1>Learn. Blog. <span class="hero-accent">Grow.</span></h1>
+    <p>Your all-in-one student community platform for sharing knowledge, writing blogs, and building your profile.</p>
 
-<div class="cards">
+    <div class="hero-actions">
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('profile.view_profile') }}" class="btn btn-primary">Dashboard</a>
+        {% else %}
+            <a href="{{ url_for('auth.signup') }}" class="btn btn-primary">Get Started Free</a>
+        {% endif %}
+        <a href="{{ url_for('blog.list_posts') }}" class="btn btn-outline">Explore Blog →</a>
+    </div>
+</section>
 
-    <div class="card">
-        <h3>📚 Learn</h3>
-        <p>Access study materials and improve your skills.</p>
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Learn</h3>
+        <p>Access curated study materials and sharpen your skills with community resources.</p>
     </div>
 
-    <div class="card">
-        <h3>✍️ Blog</h3>
-        <p>Write and share your knowledge with others.</p>
+    <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <h3>Blog</h3>
+        <p>Write articles, share tutorials, and build your portfolio of knowledge.</p>
     </div>
 
-    <div class="card">
-        <h3>👤 Profile</h3>
-        <p>Manage your personal dashboard and activity.</p>
+    <div class="feature-card">
+        <div class="feature-icon">👤</div>
+        <h3>Profile</h3>
+        <p>Manage your personal dashboard, track your posts, and showcase your work.</p>
     </div>
+</section>
 
-</div>
-
-<div class="buttons">
-    {% if current_user.is_authenticated %}
-        <a href="{{ url_for('profile.view_profile') }}" class="btn">Get Started</a>
-    {% else %}
-        <a href="{{ url_for('auth.signup') }}" class="btn">Get Started</a>
-    {% endif %}
-    <a href="{{ url_for('blog.list_posts') }}" class="btn secondary">Explore Blog</a>
-</div>
+<section class="stats-bar">
+    <div class="stat">
+        <span class="stat-number">∞</span>
+        <span class="stat-label">Posts to Write</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Always Available</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Free to Use</span>
+    </div>
+</section>
 
 {% endblock %}
